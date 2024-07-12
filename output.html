@@ -1,0 +1,63 @@
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+}
+
+#calendar {
+  max-width: min(95vw,1100px);
+  max-height: 80vh;
+  margin: 40px auto;
+}
+ul {
+list-style-type: none;
+}
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
+<div id='calendar'></div>
+
+<div id='key'>
+<ul>
+
+<li>
+        <div class="color-square" style="background-color: #0d6efd;width:1em;height:1em;display:inline-block;padding-right:1em;"> 
+        </div>
+       <span style=""> Eleanor O'Rourke - Eleanor.ORourke@ext.esa.int </span>
+    
+<li>
+        <div class="color-square" style="background-color: #6610f2;width:1em;height:1em;display:inline-block;padding-right:1em;"> 
+        </div>
+       <span style=""> Daniel Ellis - Daniel.Ellis@ext.esa.int </span>
+    
+    <li>
+</ul>
+</div>
+
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    initialDate: new Date(),
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    events: [{'title': 'Daniel Ellis - avail cal test', 'start': '2024-07-09T00:00:00', 'end': '2024-07-09T00:00:00', 'color': '#6610f2'}, {'title': "Eleanor O'Rourke - EOR annual leave", 'start': '2024-08-19T00:00:00', 'end': '2024-08-24T00:00:00', 'color': '#0d6efd'}]
+  });
+
+  calendar.render();
+});
+
+</script>

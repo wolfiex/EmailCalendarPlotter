@@ -1,0 +1,59 @@
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+}
+
+#calendar {
+  max-width: min(95vw,1100px);
+  max-height: 80vh;
+  margin: 40px auto;
+}
+ul {
+list-style-type: none;
+}
+
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+
+<div id='calendar'></div>
+
+<div id='key'>
+<ul>
+{% for name, color in keys.items() %}
+<li>
+        <div class="color-square" style="background-color: {{ color }};width:1em;height:1em;display:inline-block;padding-right:1em;"> 
+        </div>
+       <span style=""> {{ name }} </span>
+    {% endfor %}
+    <li>
+</ul>
+</div>
+
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    initialDate: new Date(),
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    events: {{events}}
+  });
+
+  calendar.render();
+});
+
+</script>
+
